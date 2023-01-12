@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 
 public class Registration {
+    private User user;
+
     public static void main(String[] args) {
         Registration registration = new Registration();
         registration.startForm();
@@ -40,6 +42,13 @@ public class Registration {
 
         System.out.print(" Введите никнейм => ");
         String nik = sc.nextLine();
+        User existUser = null;
+        for(User findNik : list){
+            if(findNik.getNik().equals(nik)){
+                existUser = findNik;
+                break;
+            }
+        }
 
         System.out.print(" Введите возраст => ");
         int age = Integer.parseInt(sc.nextLine());
@@ -49,55 +58,57 @@ public class Registration {
         }
 
 
+
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
         if (password.length() < 8) {
             System.out.println("Не короче длины твоего члена!");
         }
 
-        startForm();
 
         User user = new User(age, login, password, nik);
 
         list.add(user);
+
+        startForm();
     }
 
     private void enter() {
         System.out.print(" Введите логин => ");
         String login = sc.nextLine();
-
+        User existUser = null;
+        for (User findlogin : list) {
+            if (findlogin.getLogin().equals(login)) {
+                existUser = findlogin;
+                break;
+            }
+        }
+        if (existUser != null) {
+            printUserData();
+        }
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
         if (password.length() < 8) {
             System.out.println("Не короче длины твоего члена!");
-        }
-
-        else {
+        } else {
             startForm();
         }
 
-        for (User findLogin : list){
-            if(login.equals(findLogin)){
-                return;
-            }
-        }
 
 
-        // enter должен заканчиваться printUserData
+
 
 
     }
 
 
-
-    private User printUserData(User user) {
-        System.out.println(" Логин "+ user.getLogin());
-        System.out.println("Пароль "+user.getPassword());
-        System.out.println("Возраст "+user.getAge());
-        System.out.println("Никнейм "+user.getNik());
+    private User printUserData() {
+        System.out.println(" Логин " + user.getLogin());
+        System.out.println("Пароль " + user.getPassword());
+        System.out.println("Возраст " + user.getAge());
+        System.out.println("Никнейм " + user.getNik());
         return user;
     }
-
 
 
 }
