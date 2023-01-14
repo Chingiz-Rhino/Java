@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 
 public class Registration {
-    private User user;
 
     public static void main(String[] args) {
         Registration registration = new Registration();
@@ -42,11 +41,12 @@ public class Registration {
 
         System.out.print(" Введите никнейм => ");
         String nik = sc.nextLine();
-        User existUser = null;
-        for(User findNik : list){
-            if(findNik.getNik().equals(nik)){
-                existUser = findNik;
-                break;
+        User existingUser = null;
+        for (User user : list) {
+            if (user.getNik().equals(nik)) {
+                System.out.println("Такой юзер есть");
+                startForm();
+
             }
         }
 
@@ -56,7 +56,6 @@ public class Registration {
             System.out.println(" Брысь !");
             startForm();
         }
-
 
 
         System.out.print(" Введите пароль => ");
@@ -76,33 +75,37 @@ public class Registration {
     private void enter() {
         System.out.print(" Введите логин => ");
         String login = sc.nextLine();
-        User existUser = null;
-        for (User findlogin : list) {
-            if (findlogin.getLogin().equals(login)) {
-                existUser = findlogin;
-                break;
-            }
-        }
-        if (existUser != null) {
-            printUserData();
-        }
+
+
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
         if (password.length() < 8) {
             System.out.println("Не короче длины твоего члена!");
+        }
+        User existingUser = null;
+        for (User user : list) {
+            if (user.getLogin().equals(login)) {
+                existingUser = user;
+                break;
+            }
+        }
+        if (existingUser != null) {
+            if (existingUser.getPassword().equals(password)) {
+                printUserData(existingUser);
+            } else {
+                System.out.println("Пароль неверный");
+            }
+
         } else {
+            System.out.println("Такого юзера нет");
             startForm();
         }
-
-
-
-
 
 
     }
 
 
-    private User printUserData() {
+    private User printUserData(User user) {
         System.out.println(" Логин " + user.getLogin());
         System.out.println("Пароль " + user.getPassword());
         System.out.println("Возраст " + user.getAge());
