@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -12,6 +13,10 @@ public class Registration {
     }
 
     private final ArrayList<User> list = new ArrayList<User>();
+    List<String> user = new ArrayList<>();
+
+
+
 
     Scanner sc = new Scanner(System.in);
 
@@ -20,7 +25,7 @@ public class Registration {
         System.out.println(" Зарегистрироваться => 1");
         System.out.println(" Войти => 2");
         String login = sc.nextLine();
-
+        user.add("Admin");
         int enterLog = Integer.parseInt(login);
         if (enterLog == 1) {
 

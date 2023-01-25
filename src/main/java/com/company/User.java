@@ -9,6 +9,7 @@ public class User {
     private String password;
     private String nik;
 
+
     public User() {
     }
 
@@ -51,6 +52,11 @@ public class User {
         this.nik = nik;
     }
 
+
+}
+enum Role {
+    USER,
+    ADMIN
 }
 
 
