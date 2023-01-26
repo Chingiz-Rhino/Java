@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.company.User.Role.USER;
+
 
 public class Registration {
+
+
 
     public static void main(String[] args) {
         Registration registration = new Registration();
@@ -16,16 +20,13 @@ public class Registration {
     List<String> user = new ArrayList<>();
 
 
-
-
     Scanner sc = new Scanner(System.in);
-
+    User administrator = new User(111, "admin", "admin", "admin", User.Role.ADMIN);
 
     public void startForm() {
         System.out.println(" Зарегистрироваться => 1");
         System.out.println(" Войти => 2");
         String login = sc.nextLine();
-        user.add("Admin");
         int enterLog = Integer.parseInt(login);
         if (enterLog == 1) {
 
@@ -58,7 +59,7 @@ public class Registration {
         System.out.print(" Введите возраст => ");
         int age = Integer.parseInt(sc.nextLine());
         if (age < 16) {
-            System.out.println(" Брысь !");
+            System.out.println("Вы слишком молоды");
             startForm();
         }
 
@@ -66,11 +67,12 @@ public class Registration {
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
         if (password.length() < 8) {
-            System.out.println("Не короче длины твоего члена!");
+            System.out.println("Слишком короткий");
         }
 
 
-        User user = new User(age, login, password, nik);
+
+        User user = new User(age, login, password, nik, User.Role.USER);
 
         list.add(user);
 
@@ -85,7 +87,7 @@ public class Registration {
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
         if (password.length() < 8) {
-            System.out.println("Не короче длины твоего члена!");
+            System.out.println("Слишком короткий");
         }
         User existingUser = null;
         for (User user : list) {

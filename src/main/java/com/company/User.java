@@ -8,16 +8,27 @@ public class User {
     private String login;
     private String password;
     private String nik;
+    private Role role;
 
 
     public User() {
     }
 
-    public User(int age, String login, String password, String nik) {
+    public User(int age, String login, String password, String nik, Role role) {
         this.age = age;
         this.login = login;
         this.password = password;
         this.nik = nik;
+        this.role = role;
+    }
+
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public int getAge() {
@@ -52,11 +63,12 @@ public class User {
         this.nik = nik;
     }
 
+    enum Role {
+        USER,
+        ADMIN
 
+    }
 }
-enum Role {
-    USER,
-    ADMIN
-}
+
 
 
