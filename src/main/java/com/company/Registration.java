@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.company.User.Role.USER;
 
-
-public class Registration {
-
+public class Registration<administrator> {
 
 
     public static void main(String[] args) {
@@ -21,15 +18,15 @@ public class Registration {
 
 
     Scanner sc = new Scanner(System.in);
-    User administrator = new User(111, "admin", "admin", "admin", User.Role.ADMIN);
+    User administrator = new User(111, "admin", "admin111", "admin", User.Role.ADMIN);
 
     public void startForm() {
+        list.add(administrator);
         System.out.println(" Зарегистрироваться => 1");
         System.out.println(" Войти => 2");
         String login = sc.nextLine();
         int enterLog = Integer.parseInt(login);
         if (enterLog == 1) {
-
             reg();
         } else if (enterLog == 2) {
             enter();
@@ -71,7 +68,6 @@ public class Registration {
         }
 
 
-
         User user = new User(age, login, password, nik, User.Role.USER);
 
         list.add(user);
@@ -96,12 +92,19 @@ public class Registration {
                 break;
             }
         }
+
         if (existingUser != null) {
             if (existingUser.getPassword().equals(password)) {
-                printUserData(existingUser);
+                if(existingUser.getRole() == User.Role.ADMIN){
+                    System.out.println("Выйти => 1");
+                    System.out.println("Список юзеров => 2");
+                    System.out.println("Информация по конкретному юзеру => 3");
+                    System.out.println("Выдать админские права пользователю => 4");}
+                else{printUserData(existingUser);}
             } else {
                 System.out.println("Пароль неверный");
             }
+
 
         } else {
             System.out.println("Такого юзера нет");
