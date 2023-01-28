@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Registration<administrator> {
+public class Registration {
 
 
     public static void main(String[] args) {
@@ -99,7 +99,20 @@ public class Registration<administrator> {
                     System.out.println("Выйти => 1");
                     System.out.println("Список юзеров => 2");
                     System.out.println("Информация по конкретному юзеру => 3");
-                    System.out.println("Выдать админские права пользователю => 4");}
+                    System.out.println("Выдать админские права пользователю => 4");
+                    String pass = sc.nextLine();
+                    int transition = Integer.parseInt(pass);
+                    if(transition==1){
+                        startForm();
+                    } else if(transition==2){
+                        System.out.println("Пока не готово");
+                    } else if (transition==3){
+                        printUserData(existingUser);
+                    } else if(transition==4){
+                        System.out.println("Пока не готово");
+                    }
+
+                }
                 else{printUserData(existingUser);}
             } else {
                 System.out.println("Пароль неверный");
