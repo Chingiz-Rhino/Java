@@ -1,24 +1,24 @@
 package com.company;
 
-import java.util.Scanner;
+import lombok.ToString;
 
-
+@ToString
 public class User {
     private int age;
     private String login;
     private String password;
-    private String nik;
+    private String nickname;
     private Role role;
 
 
     public User() {
     }
 
-    public User(int age, String login, String password, String nik, Role role) {
+    public User(int age, String login, String password, String nickname, Role role) {
         this.age = age;
         this.login = login;
         this.password = password;
-        this.nik = nik;
+        this.nickname = nickname;
         this.role = role;
     }
 
@@ -55,12 +55,12 @@ public class User {
         this.password = password;
     }
 
-    public String getNik() {
-        return nik;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNik(String nik) {
-        this.nik = nik;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     enum Role {

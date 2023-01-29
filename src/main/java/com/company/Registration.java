@@ -46,7 +46,7 @@ public class Registration {
         String nik = sc.nextLine();
         User existingUser = null;
         for (User user : list) {
-            if (user.getNik().equals(nik)) {
+            if (user.getNickname().equals(nik)) {
                 System.out.println("Такой юзер есть");
                 startForm();
 
@@ -95,25 +95,26 @@ public class Registration {
 
         if (existingUser != null) {
             if (existingUser.getPassword().equals(password)) {
-                if(existingUser.getRole() == User.Role.ADMIN){
+                if (existingUser.getRole() == User.Role.ADMIN) {
                     System.out.println("Выйти => 1");
                     System.out.println("Список юзеров => 2");
                     System.out.println("Информация по конкретному юзеру => 3");
                     System.out.println("Выдать админские права пользователю => 4");
                     String pass = sc.nextLine();
                     int transition = Integer.parseInt(pass);
-                    if(transition==1){
+                    if (transition == 1) {
                         startForm();
-                    } else if(transition==2){
+                    } else if (transition == 2) {
+                        System.out.println(listOfUsers());
+                    } else if (transition == 3) {
                         System.out.println("Пока не готово");
-                    } else if (transition==3){
-                        printUserData(existingUser);
-                    } else if(transition==4){
+                    } else if (transition == 4) {
                         System.out.println("Пока не готово");
                     }
 
+                } else {
+                    printUserData(existingUser);
                 }
-                else{printUserData(existingUser);}
             } else {
                 System.out.println("Пароль неверный");
             }
@@ -128,13 +129,27 @@ public class Registration {
     }
 
 
+
+
     private User printUserData(User user) {
         System.out.println(" Логин " + user.getLogin());
         System.out.println("Пароль " + user.getPassword());
         System.out.println("Возраст " + user.getAge());
-        System.out.println("Никнейм " + user.getNik());
+        System.out.println("Никнейм " + user.getNickname());
         return user;
     }
 
+
+    private String listOfUsers() {
+        StringBuilder sb = new StringBuilder();
+        for (User users : list) {
+            sb.append(users);
+        }
+        return sb.toString();
+    }
+
+    private void adminRights() {
+
+    }
 
 }
