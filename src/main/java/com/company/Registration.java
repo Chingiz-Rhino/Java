@@ -1,9 +1,12 @@
 package com.company;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@NotNull
 
 public class Registration {
 
@@ -107,7 +110,7 @@ public class Registration {
                     } else if (transition == 2) {
                         System.out.println(listOfUsers());
                     } else if (transition == 3) {
-                        System.out.println("Пока не готово");
+                        System.out.println(findUserByNickname(list, "nickname"));
                     } else if (transition == 4) {
                         System.out.println("Пока не готово");
                     }
@@ -130,7 +133,6 @@ public class Registration {
 
 
 
-
     private User printUserData(User user) {
         System.out.println(" Логин " + user.getLogin());
         System.out.println("Пароль " + user.getPassword());
@@ -148,8 +150,15 @@ public class Registration {
         return sb.toString();
     }
 
-    private void adminRights() {
+    User findUserByNickname(List<User> users, String nickname) {
+        for (User user : users) {
+            if (user.getNickname().equals(nickname)) {
+                return user;
+            }
+        }
 
+        return null;
     }
+
 
 }
