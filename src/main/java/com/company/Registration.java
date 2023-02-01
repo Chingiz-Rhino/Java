@@ -110,7 +110,7 @@ public class Registration {
                     } else if (transition == 2) {
                         System.out.println(listOfUsers());
                     } else if (transition == 3) {
-                        System.out.println(findUserByNickname(list, "nickname"));
+                        findUserByNickname(list, login);
                     } else if (transition == 4) {
                         System.out.println("Пока не готово");
                     }
@@ -130,6 +130,7 @@ public class Registration {
 
 
     }
+
 
 
 
