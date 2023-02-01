@@ -18,10 +18,16 @@ class MethodLearnTest {
 
 
 
-
+    //2. метод который принимает список юзеров и имя юзера и возвращает всех юзеров с таким именем
     @org.junit.jupiter.api.Test
-    void testFindAllUsersWithSameName() {
-
+    void positiveFindAllUsersWithSameName() {
+        User user = new User(111, "china", "","china111", User.Role.USER);
+        assertEquals("china", user.getLogin());
+    }
+    @org.junit.jupiter.api.Test
+    void negativeFindAllUsersWithSameName() {
+        User user = new User(111, "china", "","china111", User.Role.USER);
+        assertEquals("china11", user.getLogin());
     }
 
     @org.junit.jupiter.api.Test
