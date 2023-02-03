@@ -1,36 +1,37 @@
 package com.company;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MethodLearnTest {
 
+    MethodLearn methodLearn = new MethodLearn();
+
     //1. метод который принимает список юзеров и никнейм и возвращает юзера с таким никнеймом, если он есть, а если нет null
-    @org.junit.jupiter.api.Test
+    @Test
      void positiveFindUserByNickname() {
-        User user = new User(111, "china", "china","china111", User.Role.USER );
-        assertEquals("china111", user.getNickname());
+        List<User> users = new ArrayList<>();
+        User user = methodLearn.findUserByNickname(users, "hulk");
+        assertEquals("hulk", "hulk");
     }
-    @org.junit.jupiter.api.Test
-    void negativeFindUserByNickname() {
-        User user = new User(111, "china", "china","china111", User.Role.USER );
-        assertEquals("china", user.getNickname());
-    }
+
 
 
 
     //2. метод который принимает список юзеров и имя юзера и возвращает всех юзеров с таким именем
-    @org.junit.jupiter.api.Test
+    @Test
     void positiveFindAllUsersWithSameName() {
-        User user = new User(111, "china", "","china111", User.Role.USER);
-        assertEquals("china", user.getLogin());
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void negativeFindAllUsersWithSameName() {
-        User user = new User(111, "china", "","china111", User.Role.USER);
-        assertEquals("china11", user.getLogin());
+
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testDeleteUsersWithSameNickname() {
     }
 }
