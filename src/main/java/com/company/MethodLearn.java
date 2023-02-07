@@ -3,10 +3,6 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.User.Role.USER;
-
-
-
 
 //
 //7*. метод который принимает список юзеров и возвращает сгруппированных юзеров по никнейму
@@ -16,7 +12,7 @@ public class MethodLearn {
     public static void main(String[] args) {
         MethodLearn methodLearn = new MethodLearn();
         List<User> users = new ArrayList();
-        users.add(new User(111, "china", "china123", "hulk", User.Role.USER));
+        users.add(new User(0, null, null, null, User.Role.USER, null));
         methodLearn.findUserByNickname(users, "hulk");
         methodLearn.findAllUsersWithSameName(users, "china");
         methodLearn.deleteUsersWithSameNickname(users, "chubaka");
@@ -38,11 +34,11 @@ public class MethodLearn {
     }
 
     //2. метод который принимает список юзеров и имя юзера и возвращает всех юзеров с таким именем
-    List<User> findAllUsersWithSameName(List<User>users, String login) {
+    List<User> findAllUsersWithSameName(List<User>users, String name) {
         List<User> listUser = new ArrayList<>();
-        for (User usersName : users) {
-            if (usersName.getLogin().equals(login)) {
-                listUser.add(usersName);
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                listUser.add(user);
             }
         }
         return listUser;
@@ -91,6 +87,7 @@ public class MethodLearn {
     boolean checkNicknameForUser (User user, String nickname){
         return nickname.equals(user.getNickname());
     }
+
 
 
 }

@@ -52,7 +52,7 @@ public class Test {
         System.out.println(nickname);
         System.out.println(role);
         System.out.println("Метод закончил ");
-        return new User(age, login, password, nickname, role);
+        return new User(age, login, password, nickname, role, "");
 
     }
 

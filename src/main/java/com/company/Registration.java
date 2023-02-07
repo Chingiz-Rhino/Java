@@ -21,7 +21,7 @@ public class Registration {
 
 
     Scanner sc = new Scanner(System.in);
-    User administrator = new User(111, "admin", "admin111", "admin", User.Role.ADMIN);
+    User administrator = new User(111, "admin", "admin111", "admin", User.Role.ADMIN, "");
 
     public void startForm() {
         list.add(administrator);
@@ -71,7 +71,7 @@ public class Registration {
         }
 
 
-        User user = new User(age, login, password, nik, User.Role.USER);
+        User user = new User(age, login, password, nik, User.Role.USER, "");
 
         list.add(user);
 
