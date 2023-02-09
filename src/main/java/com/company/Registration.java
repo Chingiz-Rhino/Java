@@ -112,7 +112,7 @@ public class Registration {
                     } else if (transition == 3) {
                         System.out.println(findUserByNickname(list, sc.nextLine()));
                     } else if (transition == 4) {
-                        System.out.println();
+                        grantAdminRights(sc.nextLine());
                     }
 
                 } else {
@@ -162,7 +162,11 @@ public class Registration {
         return null;
     }
 
-
+    void grantAdminRights (User user){
+        if (user.getRole()== User.Role.USER){
+        user.setRole(User.Role.ADMIN);
+    }
+    }
 
 
 }
