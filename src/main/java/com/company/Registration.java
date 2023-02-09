@@ -66,7 +66,7 @@ public class Registration {
 
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
-        if (password.length() < 8) {
+        if (password.length() <= 8) {
             System.out.println("Слишком короткий");
         }
 
@@ -108,11 +108,11 @@ public class Registration {
                     if (transition == 1) {
                         startForm();
                     } else if (transition == 2) {
-                        System.out.println(listOfUsers());
+                        System.out.println(listOfUsers(list));
                     } else if (transition == 3) {
-                        findUserByNickname(list, login);
+                        System.out.println(findUserByNickname(list, sc.nextLine()));
                     } else if (transition == 4) {
-                        System.out.println("Пока не готово");
+                        System.out.println();
                     }
 
                 } else {
@@ -143,16 +143,17 @@ public class Registration {
     }
 
 
-    private String listOfUsers() {
-        StringBuilder sb = new StringBuilder();
-        for (User users : list) {
-            sb.append(users);
+    List<User> listOfUsers(List<User> list) {
+        List<User> takeUser = new ArrayList<>();
+        for (User users: list) {
+            if(users.getRole().equals(User.Role.USER));
+            takeUser.add(users);
         }
-        return sb.toString();
+        return takeUser;
     }
 
-    User findUserByNickname(List<User> users, String nickname) {
-        for (User user : users) {
+    User findUserByNickname(List<User> list, String nickname) {
+        for (User user : list) {
             if (user.getNickname().equals(nickname)) {
                 return user;
             }
@@ -160,6 +161,8 @@ public class Registration {
 
         return null;
     }
+
+
 
 
 }
