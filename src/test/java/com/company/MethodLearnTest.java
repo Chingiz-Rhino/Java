@@ -3,9 +3,9 @@ package com.company;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static com.company.User.Role.USER;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MethodLearnTest {
@@ -46,12 +46,11 @@ class MethodLearnTest {
         User user1 = new User(0, null, null, "chinchin", null, null);
         User user2 = new User(0, null, null, "spider", null, null);
         User user3 = new User(0, null, null, "spiderman", null, null);
-        List<User> users = List.of(user1, user2, user3);
+        List<User> users = new ArrayList<User>(Arrays.asList(user1, user2, user3));
         methodLearn.deleteUsersWithSameNickname(users, user1.getNickname());
         List<User> actualResult = users;
-        List<User> expectedResult = List.of(user2, user3);
+        List<User> expectedResult = new ArrayList<User>(Arrays.asList(user2, user3));
         assertEquals(expectedResult, actualResult);
-
     }
     //4. метод который принимает список юзеров и возвращает всех юзеров типа юзер
     @Test
@@ -78,6 +77,15 @@ class MethodLearnTest {
     //6. метод который принимает юзера и никнейм и возвращает результат того соответствует ли этот юзер никнейму или нет
     @Test
     void positiveCheckNicknameForUser(){
+        User user1 = new User(0, null, null, "Shakil", null, null);
+        User user2 = new User(0, null, null, "O'", null, null);
+        User user3 = new User(0, null, null, "Nill", null, null);
+        List<User> users = List.of(user1, user2, user3);
+       boolean actualResult = methodLearn.checkNicknameForUser(user1, "Shakil");
+       boolean expectedResult = true;
+       assertEquals(expectedResult, actualResult);
+
+
 
     }
 

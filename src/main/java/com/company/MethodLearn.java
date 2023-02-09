@@ -84,8 +84,8 @@ public class MethodLearn {
     }
 
 //6. метод который принимает юзера и никнейм и возвращает результат того соответствует ли этот юзер никнейму или нет
-    boolean checkNicknameForUser (User user, String nickname){
-        return nickname.equals(user.getNickname());
+    boolean checkNicknameForUser (User users, String nickname){
+        return nickname.equals(users.getNickname());
     }
 
 
