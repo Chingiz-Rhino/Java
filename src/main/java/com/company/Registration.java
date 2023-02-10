@@ -66,7 +66,7 @@ public class Registration {
 
         System.out.print(" Введите пароль => ");
         String password = sc.nextLine();
-        if (password.length() <= 8) {
+        if (password.length() < 8) {
             System.out.println("Слишком короткий");
         }
 
@@ -112,7 +112,10 @@ public class Registration {
                     } else if (transition == 3) {
                         System.out.println(findUserByNickname(list, sc.nextLine()));
                     } else if (transition == 4) {
-                        grantAdminRights(sc.nextLine());
+                        System.out.println("Выберите пользователя: " + listOfUsers(list));
+                        grantAdminRights(list, sc.nextLine());
+
+
                     }
 
                 } else {
@@ -130,7 +133,6 @@ public class Registration {
 
 
     }
-
 
 
 
@@ -162,11 +164,17 @@ public class Registration {
         return null;
     }
 
-    void grantAdminRights (User user){
-        if (user.getRole()== User.Role.USER){
-        user.setRole(User.Role.ADMIN);
+    void grantAdminRights (List<User> list, String nickname){
+        for (User user: list) {
+            if(user.getNickname().equals(nickname)){
+                   if(nickname != null){
+                       user.setRole(User.Role.ADMIN);
+                   }
+            }
+        }
+
     }
     }
 
 
-}
+
